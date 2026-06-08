@@ -1,0 +1,82 @@
+[project]
+name = "open-vlm-representation"
+version = "0.1.0"
+description = "Representation analysis of vision-language models."
+readme = "README.md"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "." }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "N",  # pep8-naming
+    "UP", # pyupgrade
+    "B",  # bugbear
+    "D",  # pydocstyle
+]
+
+ignore = ["D203", "D213"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+
+warn_return_any = true
+warn_unused_configs = true
+
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+check_untyped_defs = true
+
+no_implicit_optional = true
+
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+strict_equality = true
+
+pretty = true
+show_error_codes = true
+
+exclude = ["tests/", "outputs/", "logs/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+python_files = ["test_*.py"]
+
+addopts = ["-ra"]
+
+[tool.coverage.run]
+source = ["src"]
+
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

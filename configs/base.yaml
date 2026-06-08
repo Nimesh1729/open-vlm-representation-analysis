@@ -1,0 +1,19 @@
+model:
+  name: openai/clip-vit-base-patch32
+
+system:
+  seed: 42
+  device: cuda
+
+data:
+  sample_image: data/samples/YOU_SHOULD_KILL_YOURSELF_NOW.jpg
+  sample_text: "A galaxy with bright stars."
+  candidate_texts:
+    - "A galaxy with bright stars."
+    - "A dog sitting in a park."
+    - "A cat sleeping on a sofa."
+    - "A car parked on a street."
+  captions_csv: data/samples/captions.csv
+
+logging:
+  level: INFO
